@@ -7,6 +7,7 @@ using System.Net.Http;
 using System.Net.Http.Formatting;
 using System.Net.Http.Headers;
 using System.Reflection;
+using System.Web.Http;
 using System.Xml;
 using System.Xml.Linq;
 using WebApi.Hal.Interfaces;
@@ -218,7 +219,7 @@ namespace WebApi.Hal
 
         public override bool CanWriteType(Type type)
         {
-            return typeof(Representation).IsAssignableFrom(type);
+            return typeof(Representation).IsAssignableFrom(type) || type == typeof(HttpError);
         }
     }
 }

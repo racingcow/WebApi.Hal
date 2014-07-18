@@ -1,6 +1,7 @@
 using System;
 using System.Net.Http.Formatting;
 using System.Net.Http.Headers;
+using System.Web.Http;
 using Newtonsoft.Json;
 using WebApi.Hal.JsonConverters;
 
@@ -30,7 +31,7 @@ namespace WebApi.Hal
 
         public override bool CanWriteType(Type type)
         {
-            return typeof(Representation).IsAssignableFrom(type);
+            return typeof(Representation).IsAssignableFrom(type) || type == typeof(HttpError);
         }
     }
 }
